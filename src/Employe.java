@@ -1,23 +1,41 @@
 import Enum.def.Categorie;
 import Enum.def.Role;
+import Enum.def.StatutDemande;
 import Enum.def.StatutMatrimonial;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 public class Employe extends Personne implements IEmploye{
     protected String Matricule;
     protected String dateFonction;
-//    protected Double SalaireBase;
+    protected double SalaireFinal;
     protected Role role;
     protected Categorie categorie;
+    private DemandeConge demandeConge;
+    private Directeur directeur;
+
+    public Directeur getDirecteur() {
+        return directeur;
+    }
+
+    public void setDirecteur(Directeur directeur) {
+        this.directeur = directeur;
+    }
 
     public Employe(String nom, String prenom, StatutMatrimonial statutMatrimonial, String matricule, String dateFonction, Role role, Categorie categorie) {
         super(nom, prenom, statutMatrimonial);
         this.Matricule = matricule;
         this.dateFonction = dateFonction;
-//        this.SalaireBase = Role.DESIGNER;
+        this.SalaireFinal = 0.0;
         this.role = role;
         this.categorie = categorie;
-    }
+        this.statutMatrimonial = statutMatrimonial;
+        this.demandeConge = null;
 
+    }
 
     public String getPrenom() {
         return prenom;
@@ -51,14 +69,6 @@ public class Employe extends Personne implements IEmploye{
         this.dateFonction = dateFonction;
     }
 
-//    public Double getSalaireBase() {
-//        return SalaireBase;
-//    }
-//
-//    public void setSalaireBase(Double salaireBase) {
-//        SalaireBase = salaireBase;
-//    }
-
     public Role getRole() {
         return role;
     }
@@ -75,36 +85,55 @@ public class Employe extends Personne implements IEmploye{
         this.categorie = categorie;
     }
 
+    public DemandeConge getDemandeConge() {
+        return demandeConge;
+    }
+
+    public void setDemandeConge(DemandeConge demandeConge) {
+        this.demandeConge = demandeConge;
+    }
+
     @Override
-    public void poserConge(String dateDebut, String dateFin){
-        System.out.println("L'employé "+ nom+" "+prenom+" pose des congés de "+
-                dateDebut+" à "+dateFin);
+    public void poserConge(String dateDebut, String dateFin, String motif){
+        this.demandeConge = new DemandeConge(dateDebut, dateFin, motif, this);
+        this.demandeConge.setStatutDemande(StatutDemande.EN_ATTENTE);
+        this.getDirecteur().setDemandesConges(Arrays.asList(this.demandeConge));
+        System.out.println("L'employé "+ nom+" "+prenom+" pose des congés de "+ dateDebut+" à "+dateFin);
         System.out.println("il attend la validation du directeur");
     }
 
     @Override
-    public void poserConge(Conge conge){
-        System.out.println("L'employé "+ nom+" "+prenom+" pose des congés de "+
-                conge.getDateDebut()+" à "+conge.getDateFin());
-        System.out.println("il attend la validation du directeur");
+    public void poserConge(DemandeConge demandeConge){
+        this.setDemandeConge(demandeConge);
+        this.demandeConge.setStatutDemande(StatutDemande.EN_ATTENTE);
+        this.getDirecteur().addDemandesConges(Arrays.asList(this.demandeConge));
+        System.out.println("Congé posé !");
+    }
+
+    public List<DemandeConge> demanderConge(DemandeConge demandeConge){
+        this.setDemandeConge(demandeConge);
+        this.demandeConge.setStatutDemande(StatutDemande.EN_ATTENTE);
+        this.getDirecteur().addDemandesConges(Arrays.asList(this.demandeConge));
+        System.out.println("Congé posé !");
+        return this.getDirecteur().getDemandesConges();
     }
 
     @Override
-    public void calculerSalaire(Employe employe) {
-
+    public void calculerSalaire() {
+        this.SalaireFinal = role.getSalaireDeBase() + categorie.getPrime()* role.getSalaireDeBase();
+        System.out.println(this.SalaireFinal);
     }
 
     @Override
     public String toString() {
         return "Employe{" +
                 "Matricule='" + Matricule + '\'' +
-                ", dateFonction='" + dateFonction + '\'' +
-
-                ", role=" + role +
-                ", categorie=" + categorie +
-                ", nom='" + nom + '\'' +
-                ", prenom='" + prenom + '\'' +
-                ", statutMatrimonial=" + statutMatrimonial +
+                ", Date de fonction='" + dateFonction + '\'' +
+                ", Role=" + role.getRole() +
+                ", Categorie=" + categorie.getCategorie() +
+                ", Nom='" + nom + '\'' +
+                ", Prenom='" + prenom + '\'' +
+                ", Statut Matrimonial=" + statutMatrimonial.getStatut() +
                 '}';
     }
 }

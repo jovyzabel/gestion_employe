@@ -10,19 +10,28 @@ public enum Role {
 
     private String role;
 
+    public Double getSalaireDeBase() {
+        return salaireDeBase;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+
+    private Double salaireDeBase;
+
+    private Role(String role, double salaireDeBase){
+        this.role = role;
+        this.salaireDeBase = salaireDeBase;
+    }
+
     @Override
     public String toString() {
         return "Role{" +
                 "role='" + role + '\'' +
                 ", salaireDeBase=" + salaireDeBase +
                 '}';
-    }
-
-    private Double salaireDeBase;
-
-    private Role(String role, Double salaireDeBase){
-        this.role = role;
-        this.salaireDeBase = salaireDeBase;
     }
 
 
