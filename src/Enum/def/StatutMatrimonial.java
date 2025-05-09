@@ -1,14 +1,33 @@
 package Enum.def;
 
 public enum StatutMatrimonial {
-    MARIAGED("Marié"),
-    ENGAGED("Fiancé"),
-    SINGLE("Celibataire"),
-    WIDOW("Veuve"),
-    WIDOWER("Veuf");
+    MARIE("Marié", 270700.00),
+    FIANCE("Fiancé", 0.00),
+    CELIBATAIRE("Celibataire",0.00),
+    VEUVE("Veuve",0.00),
+    VEUF("Veuf",0.00);
+
+    public String getStatut() {
+        return statut;
+    }
+
+    public double getPrime() {
+        return prime;
+    }
 
     private String statut;
-    StatutMatrimonial(String statut){
+    private double prime;
+
+    StatutMatrimonial(String statut, double prime){
         this.statut = statut;
+        this.prime = prime;
+    }
+
+    @Override
+    public String toString() {
+        return "StatutMatrimonial{" +
+                "statut='" + statut + '\'' +
+                ", prime=" + prime +
+                '}';
     }
 }
