@@ -9,7 +9,7 @@ public interface DAO <T>{
     T get(int id) throws SQLException;
     List<T> getAll() throws SQLException;
     T create(T t) throws SQLException;
+    int update(T t) throws SQLException;
     int delete(T t) throws SQLException;
     //    int insert(T t) throws SQLException;
-//    int update(T t) throws SQLException;
 }
