@@ -158,6 +158,32 @@ public class EmployeDAOImpl implements EmployeDAO {
         return insertedEmploye;
     }
 
+    public int update(Employe employe) throws SQLException {
+        Connection connection = Database.getConnection();
+        String sql = "UPDATE employe SET nom = ?, prenom = ?, statut_matrimonial = ?, matricule = ?, dateFonction = ?, salaire_base = ?, salaire_final = ?, categorie = ?, role = ? WHERE id = ?";
+
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+
+        preparedStatement.setString(1, employe.getNom());
+        preparedStatement.setString(2, employe.getPrenom());
+        preparedStatement.setString(3, employe.getStatutMatrimonial().name());
+        preparedStatement.setString(4, employe.getMatricule());
+        preparedStatement.setString(5, employe.getDateFonction());
+        preparedStatement.setDouble(6, employe.getSalaireBase());
+        preparedStatement.setDouble(7, employe.getSalaireFinal());
+        preparedStatement.setString(8, employe.getCategorie().name());
+        preparedStatement.setString(9, employe.getRole().name());
+        preparedStatement.setInt(10, employe.getId()); // WHERE id = ?
+
+        int result = preparedStatement.executeUpdate();
+
+        Database.closePrepareStatement(preparedStatement);
+        Database.closeConnection(connection);
+
+        return result;
+    }
+
+
     @Override
     public int delete(Employe employe) throws SQLException {
         Connection connection = Database.getConnection();
