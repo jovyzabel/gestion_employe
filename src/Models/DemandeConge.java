@@ -1,3 +1,5 @@
+package Models;
+
 import Enum.def.StatutDemande;
 
 public class DemandeConge {
@@ -67,7 +69,7 @@ public class DemandeConge {
 
     @Override
     public String toString() {
-        return "DemandeConge{" +
+        return "Models.DemandeConge{" +
                 "dateDebut='" + dateDebut + '\'' +
                 ", dateFin='" + dateFin + '\'' +
                 ", dateDemande='" + dateDemande + '\'' +
