@@ -1,3 +1,5 @@
+package Models;
+
 import Enum.def.Categorie;
 import Enum.def.Role;
 import Enum.def.StatutDemande;
@@ -6,7 +8,7 @@ import Enum.def.StatutMatrimonial;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Directeur extends  Employe implements IDirecteur{
+public class Directeur extends  Employe implements IDirecteur {
     private  List<Employe> employes;
     private  int nbreEmploye;
     private double primeMatrimonial;
@@ -104,12 +106,12 @@ public class Directeur extends  Employe implements IDirecteur{
         System.out.println("les congés sont automatiquement validés");
     }
 
-    @Override
-    public void calculerSalaire() {
-        this.primeMatrimonial = this.statutMatrimonial.getPrime();
-        this.SalaireFinal = role.getSalaireDeBase() + categorie.getPrime()* role.getSalaireDeBase() + this.primeMatrimonial;
-        System.out.println(this.SalaireFinal);
-    }
+//    @Override
+//    public void calculerSalaire() {
+//        this.primeMatrimonial = this.statutMatrimonial.getPrime();
+//        this.SalaireFinal = role.getSalaireDeBase() + categorie.getPrime()* role.getSalaireDeBase() + this.primeMatrimonial;
+//        System.out.println(this.SalaireFinal);
+//    }
 
     public void show(){
         this.employes.forEach(System.out::println);
@@ -118,7 +120,7 @@ public class Directeur extends  Employe implements IDirecteur{
 
     @Override
     public String toString() {
-        return "Directeur{" +
+        return "Models.Directeur{" +
                 "nbreEmploye=" + nbreEmploye +
                 ", Matricule='" + Matricule + '\'' +
                 ", date de Fonction='" + dateFonction + '\'' +
