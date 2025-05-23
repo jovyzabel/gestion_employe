@@ -21,7 +21,7 @@
 - le salaire de base d'un employé est de 815.500 fcfa s'il est un chef de projet
 - Un directeur est un employé qui a un ensemble d'employé qu'il gere
 - salaire = salaire de base + prime de longevité
-- le Statut matrimonial peut etre : Mariaged -> marié, Engaged -> fiancé, Single -> Celibataire, Widow -> veuve, Widower-> veuf
+- le Statut matrimonial peut etre : MARIE -> marié, FIANCE -> marié, CELIBATAIRE -> Celibataire, VEUVE -> veuve, VEUF-> veuf
 - La demande de congé d'un employé peut avoir comme statut : EN_ATTENTE, APPROUVEE, REJETEE.
 ## Ce que nous avions pu faire pour l'instant !
 
@@ -50,8 +50,6 @@
 
 #### Package diagram : vue globale
 ![Package global diagram](./img/packageGlobal.png)
-
-
 
 
 #### NB :
