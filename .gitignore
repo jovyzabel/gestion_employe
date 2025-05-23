@@ -29,6 +29,6 @@ bin/
 .DS_Store
 
 ### Config ###
-config/config.properties
+/config/
 logs/
 src/log4j2.properties
