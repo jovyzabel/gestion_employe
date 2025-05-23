@@ -32,5 +32,3 @@ bin/
 logs/
 src/conf.properties
 src/log4j2.properties
-
-/.gitignore
