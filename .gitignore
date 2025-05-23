@@ -30,5 +30,5 @@ bin/
 
 ### Config ###
 logs/
-/src/config.properties
+src/conf.properties
 src/log4j2.properties

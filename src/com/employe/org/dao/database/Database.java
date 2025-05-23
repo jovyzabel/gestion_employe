@@ -16,7 +16,7 @@ public class Database {
     private static Logger logger = LogManager.getLogger(Database.class);
     static {
 
-        try (FileInputStream input = new FileInputStream("config.properties")) {
+        try (FileInputStream input = new FileInputStream("src/conf.properties")) {
             Properties props = new Properties();
             props.load(input);
 
