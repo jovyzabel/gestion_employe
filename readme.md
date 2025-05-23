@@ -27,15 +27,29 @@
 
 1. Factoriser les classes
 2. Créer les interfaces
-3. Ecrire certaines methodes
-4. Les implementer
+3. Les implementer
+4. Créer les services
+5. Configuration des fichiers .properties
+6. Utilisation du pattern DAO
 
 ### Use Case diagram
 ![use case diagram](./img/useCase.png)
 
-### Class Diagram
+### Class Diagrams
 
-![class diagram](./img/classDiagram.png)
+#### Domain Class diagram
+![Domain class diagram](./img/domainClass.png)
+
+#### Service Class diagram
+![Service class diagram](./img/serviceClass.png)
+
+### Package diagrams
+
+#### Package diagram : vue detaillée
+![Package diagram](./img/package_details.png)
+
+#### Package diagram : vue globale
+![Package global diagram](./img/packageGlobal.png)
 
 
 
