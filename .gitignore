@@ -27,3 +27,8 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+
+### Config ###
+config/config.properties
+logs/
+src/log4j2.properties
