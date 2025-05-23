@@ -4,9 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
 import java.sql.*;
 import java.util.Properties;
 
@@ -18,7 +16,7 @@ public class Database {
     private static Logger logger = LogManager.getLogger(Database.class);
     static {
 
-        try (FileInputStream input = new FileInputStream("config/config.properties")) {
+        try (FileInputStream input = new FileInputStream("config.properties")) {
             Properties props = new Properties();
             props.load(input);
 
